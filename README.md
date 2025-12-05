@@ -3,7 +3,7 @@
 Este repositorio reúne todo el material correspondiente a la cátedra Volpi.
 Aquí podrás encontrar:
 
-📘 Resumen completo de la materia
+📘 Resumen completo de la materia hecho por Martina Rey
 
 📝 Enunciado del Trabajo Práctico (TP)
 
