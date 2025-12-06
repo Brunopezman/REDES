@@ -5,29 +5,38 @@
 
     - ***1.1 Mencione y describa brevemente las siete (7) capas del Modelo OSI.***
     
-    CAPA 7: Aplicacion --> Interfaz con el usuario. Proporciona servicios de red
+    __CAPA 7: Aplicacion -->__ Interfaz con el usuario. Proporciona servicios de red
 
-    CAPA 6: Presentacion--> Encargada del formato, compresion y formato.
+    __CAPA 6: Presentacion -->__ Encargada del formato, compresion y formato.
 
-    CAPA 5: Sesion --> Administra el dialogo entre dispositivos. Gestiona el inicio, mantenimiento y fin de la sesion.
+    __CAPA 5: Sesion -->__ Administra el dialogo entre dispositivos. Gestiona el inicio, mantenimiento y fin de la sesion.
 
-    CAPA 4: Transporte --> Asegura que los datos lleguen completos y en orden con control de flujo y deteccion de errores.
+    __CAPA 4: Transporte -->__ Asegura que los datos lleguen completos y en orden con control de flujo y deteccion de errores.
 
-    CAPA 3: Red --> Direccionamiento y seleccion de ruta.
+    __CAPA 3: Red -->__ Direccionamiento y seleccion de ruta.
 
-    CAPA 2: Enlace de datos -> Transmicion segura entre dispositivos de la misma red local. Gestiona direcciones fisicas, control de flujo y organizacion en tramas.
+    __CAPA 2: Enlace de datos ->__ Transmicion segura entre dispositivos de la misma red local. Gestiona direcciones fisicas, control de flujo y organizacion en tramas.
 
-    CAPA 1: Fisica --> Transmicion y recepcion de bits por el medio fisico (cables, fibra, radio frecuencia)
+    __CAPA 1: Fisica -->__ Transmicion y recepcion de bits por el medio fisico (cables, fibra, radio frecuencia)
 
-    - ***1.2 Explique el proceso de encapsulación que ocurre cuando un dato viaja desde la capa de Aplicación hasta la capa Física en el modelo TCP/IP. ¿Cómo se llama la unidad de datos en la capa de Transporte (Capa 4)? ¿Y en la capa de Red (Capa 3)?***
+    - ***1.2 Explique el modelo TCP/IP y diferencielo del modelo OSI***
+
+    __Capa de Aplicacion__: Servicios de red para el usuario. Protocolos: HTTP, FTP, SMTP, DNS
+    __Capa de Transporte__: Entrega datos de extremo a extremo. Protocolos: TCP, UDP
+    __Capa de red__: Direccionamiento logico y enrutamiento (protocolo IP)
+    __Capa de acceso a red__: Incluye funciones fisicas y de enlace de datos. Protocolos: Ethernet, Token Ring, ATM, FR
+
+    El modelo OSI es teorico y pedagogico mientras que el modelo TCP/IP refleja la pila practica de internet.
+
+    - ***1.3 Explique el proceso de encapsulación que ocurre cuando un dato viaja desde la capa de Aplicación hasta la capa Física en el modelo TCP/IP. ¿Cómo se llama la unidad de datos en la capa de Transporte (Capa 4)? ¿Y en la capa de Red (Capa 3)?***
 
     El proceso de encapsulacion consiste en añadir informacion de control (encabezados y, a veces, una cola) a la Unidad de Datos de Protocolo (PDU) de la capa superior, a medida que la información viaja descendiendo en el modelo de capas, desde la Capa de Aplicación hasta la Capa Física.
 
-    - La capa de aplicacion (L7) pasa los Datos a la capa inferior.
-    - La Capa de Transporte (L4) le añade un encabezado y la PDU resultante se denomina Segmento (si usa TCP) o Datagrama (si usa UDP).
-    - La Capa de Red (L3) le añade el encabezado IP y la PDU resultante se denomina Paquete.
-    - La Capa de Enlace de Datos (L2) le añade un encabezado y una cola, y la PDU resultante se denomina Trama.
-    - La Capa Física (L1) convierte la trama en Bits para su transmisión por el medio físico.
+    - La capa de aplicacion pasa los Datos a la capa inferior.
+    - La Capa de Transporte le añade un encabezado y la PDU resultante se denomina Segmento (si usa TCP) o Datagrama (si usa UDP).
+    - La Capa de Red le añade el encabezado IP y la PDU resultante se denomina Paquete.
+    - La Capa de acceso a red le añade un encabezado y una cola, y la PDU resultante se denomina Trama. Mediante funciones fisicas se convierte la trama en Bits para su transmisión por el medio físico.
+
 
 2. **Teorema de Nyquist y Transmisión**
 
@@ -49,6 +58,8 @@
 
     La monomodo es utilizada para largas distancias (WAN/Backbone), usa un solo modo de propagación que reduce la dispersión modal a diferencia de la multimodo que es usada para distancias mas cortas (Data Center/LAN) y permite multiples modos de propagacion, lo que genera más dispersión y pérdida. El diametro del nucleo de una multimodo es de 50/62 micrómetros mientras que el de una monomodo es de 9 micrómetros. Generalmente, para monomodo los cables son más económicos, pero requiere equipos láser más precisos (caros) y con las multimodo el cable es más caro, pero usa equipos LED/VCSEL más económicos.
 
+
+
 ## Bloque 2: Infraestructura y Arquitecturas
 4. **Arquitectura de Data Centers**
 
@@ -64,11 +75,13 @@
 
     El trafico Este-Oeste es aquel que fluye internamente entre los servidores (entre racks) dentro del Data Center. Es común en entornos virtualizados o arquitecturas de microservicios (ej. un servidor web comunicándose con un servidor de bases de datos). La arquitectura que lo optimiza es pine & Leaf, que ofrece una baja latencia y un gran ancho de banda no bloqueante para las comunicaciones internas.
 
+
 5. **Par Trenzado y Crosstalk**
 
     ***¿Cuál es el principal objetivo de trenzar los pares de hilos de cobre en un cable UTP (Unshielded Twisted Pair)?Explique brevemente qué es la Diafonía (Crosstalk) y cómo el trenzado ayuda a mitigarla.***
 
     El principal objetivo es minimizar la interferencia entre señales que viajan por diferentes pares dentro del mismo cable, también conocida como crosstalk o diafonía. Al trenzar los hilos de cobre generamos una estructura que mejora la proteccion contra interferencias.
+
 
 6. **NFV y la Evolución de las Redes**
 
@@ -83,6 +96,8 @@
     - VNFM (VNF Manager) --> Adminsitra funciones virtualizadas
     - VIM (Virtual Infrastructure Manager) --> Controla la infraestructura
 
+
+
 ## Bloque 3: Protocolos y Enrutamiento
 
 7. **Enrutamiento Estático vs. Dinámico**
@@ -94,17 +109,20 @@
     - Protocolo de Ruteo Link-State: OSPF (Open Shortest Path First).
     - Protocolo de Ruteo Vector Distancia: RIP (Routing Information Protocol).
 
+
 8. **MPLS (Multiprotocol Label Switching)**
 
     ***Describa qué es MPLS y cómo difiere del enrutamiento IP tradicional. ¿Cuál es la función principal de las etiquetas (labels)? ¿Cuál es una aplicación clave de MPLS en redes empresariales (ej. VPNs)?***
 
     MPLS es una tecnologia de transporte de datos en redes que usa etiquetas para enrutar, en lugar de direcciones IP completas. Su funcion principal es permitir la conmutación y el reenvío rápido en el core de la red basado en la etiqueta en lugar de realizar una búsqueda compleja en la tabla de ruteo IP en cada salto. Los proveedores de servicios (ISPs) lo usan como transporte WAN. Es muy usado en empresas con multiples sedes dada la seguridad de las VPN.
 
+
 9. **Protocolos Obsoletos/Legacy**
 
     ***De los protocolos de Capa 2 o 3, como X.25 y Frame Relay, ¿cuál era la principal limitación que los hacía ineficientes para el tráfico en tiempo real, lo que llevó a su reemplazo por tecnologías más modernas como Ethernet o MPLS?***
 
     La principal limitacion fue la generacion de sobrecarga de red (overhead) y la falta de eficiencia para trafico en tiempo real por parte de la X.25. Luego fue reemplazada por FR para tráfico por ráfagas (ej: cajeros automáticos) pero esta ultima ya no se usa comercialmente.
+
 
 10. **Defina brevemente los siguientes términos:**
 
@@ -120,6 +138,8 @@
     ***QoS (Quality of Service):***
     Caracteristica moderna de los servicios que permite priorizar ciertos tipos de trafico, como llamadas.
 
+
+
 ## Bloque 4: Capa de Enlace, Transmisión y Multiplexación
 
 11. **Direccionamiento y Segmentación de Capa 2** 
@@ -134,6 +154,7 @@
 
     El proposito principal de implementar VLANs es reducir broadcasts y congestión mediante la particion de una LAN fisica en multiples redes virtuales; mejorando rendimiento y seguridad. El estándar de IEEE utilizado para etiquetar las tramas Ethernet y permitir que los switches diferencien el tráfico de distintas VLANs a través de un enlace troncal (trunk) es IEEE 802.1Q. Este protocolo inserta un campo de etiqueta (tag) en la cabecera de la trama Ethernet original, indicando a qué VLAN pertenece.
 
+
 12. **Multiplexación en Redes. Defina los tres (3) tipos de multiplexación más comunes, indicando el medio físico o la variable que utilizan para combinar múltiples señales en un único canal:**
 
 - ***FDM (Frequency Division Multiplexing): ***
@@ -144,6 +165,7 @@ En TDM se divide la señal en ranuras de tiempo. En su version sincronica cada o
 
 - ***WDM (Wavelength Division Multiplexing): ***
 En WDM se parten longitudes de onda. Es usada en fibra optica y es base de las redes opticas modernas.
+
 
 13. **NAT y la Escasez de Direcciones IP**
 
@@ -157,11 +179,13 @@ En WDM se parten longitudes de onda. Es usada en fibra optica y es base de las r
 
     El uso masivo de PAT mitigó la escasez de direcciones IPv4 al permitir que miles de dispositivos en redes privadas compartieran una única dirección IPv4 pública globalmente ruteable. Esto multiplicó la cantidad de dispositivos que podían acceder a Internet sin la necesidad de asignar una dirección pública a cada uno, posponiendo por años el agotamiento total de las direcciones IPv4.
 
+
+
 ## Bloque 5: Arquitecturas Avanzadas y Convergencia
 
 14. **SDN (Software Defined Networking)**
 
-    - ***14.1 Defina SDN (Software Defined Networking). ¿Cuál es el principio fundamental que separa SDN de las arquitecturas de red tradicionales? ***
+    - ***14.1 Defina SDN (Software Defined Networking). ¿Cuál es el principio fundamental que separa SDN de las arquitecturas de red tradicionales?***
 
     SDN es una tecnologia con el proposito de separar plano de control y datos. Su enfoque es el control centralizado y programable.
 
@@ -171,12 +195,12 @@ En WDM se parten longitudes de onda. Es usada en fibra optica y es base de las r
     
     SDN aporta la inteligencia y la programación. El controlador SDN es el "cerebro" centralizado que define y programa dinámicamente las rutas, las políticas y el flujo de tráfico hacia, desde o a través de esas NFVs, permitiendo la automatización de los servicios de red.
 
+
 15. **Infraestructura y PoE**
 
     - ***15.1 Defina PoE (Power over Ethernet) y mencione dos (2) dispositivos comunes de borde de red (Edge Devices) que se benefician directamente de esta tecnología.*** 
 
     Power over Ethernet es una tecnologia que permite transmitir datos y energia electrica por el mismo cable ethernet. Un ejemplo de dispositivos que se benefician con esta tecnologia son los telefonos VoIP y las camaras simples.
-
 
     - ***15.2 ¿Qué significa la clasificación CAT 6A en el cableado de par trenzado UTP/STP, y cuál es el principal beneficio que ofrece en comparación con CAT 5e o CAT 6?***
 
