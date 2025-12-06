@@ -22,8 +22,11 @@
     - ***1.2 Explique el modelo TCP/IP y diferencielo del modelo OSI***
 
     __Capa de Aplicacion__: Servicios de red para el usuario. Protocolos: HTTP, FTP, SMTP, DNS
+
     __Capa de Transporte__: Entrega datos de extremo a extremo. Protocolos: TCP, UDP
+
     __Capa de red__: Direccionamiento logico y enrutamiento (protocolo IP)
+    
     __Capa de acceso a red__: Incluye funciones fisicas y de enlace de datos. Protocolos: Ethernet, Token Ring, ATM, FR
 
     El modelo OSI es teorico y pedagogico mientras que el modelo TCP/IP refleja la pila practica de internet.
