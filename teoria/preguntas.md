@@ -26,7 +26,7 @@
     __Capa de Transporte__: Entrega datos de extremo a extremo. Protocolos: TCP, UDP
 
     __Capa de red__: Direccionamiento logico y enrutamiento (protocolo IP)
-    
+
     __Capa de acceso a red__: Incluye funciones fisicas y de enlace de datos. Protocolos: Ethernet, Token Ring, ATM, FR
 
     El modelo OSI es teorico y pedagogico mientras que el modelo TCP/IP refleja la pila practica de internet.
@@ -110,14 +110,19 @@
     En el ruteo estatico, las rutas se ingresan manualmente en la tabla de enrutamiento mientras que en el ruteo dinamico se utilizan protocolos de enrutamiento para descuburir las rutas. El estatico es mas simple pero menos flexible en comparacion con el dinamico dado que este ultimo es mas escalable y se adapta a cambios de red.
 
     - Protocolo de Ruteo Link-State: OSPF (Open Shortest Path First).
-    - Protocolo de Ruteo Vector Distancia: RIP (Routing Information Protocol).
+    - Protocolo de Ruteo Vector Distancia: BGP(Border Gateway Protocol).
 
 
 8. **MPLS (Multiprotocol Label Switching)**
 
     ***Describa qué es MPLS y cómo difiere del enrutamiento IP tradicional. ¿Cuál es la función principal de las etiquetas (labels)? ¿Cuál es una aplicación clave de MPLS en redes empresariales (ej. VPNs)?***
 
-    MPLS es una tecnologia de transporte de datos en redes que usa etiquetas para enrutar, en lugar de direcciones IP completas. Su funcion principal es permitir la conmutación y el reenvío rápido en el core de la red basado en la etiqueta en lugar de realizar una búsqueda compleja en la tabla de ruteo IP en cada salto. Los proveedores de servicios (ISPs) lo usan como transporte WAN. Es muy usado en empresas con multiples sedes dada la seguridad de las VPN.
+    MPLS es una tecnologia de transporte de datos en redes que usa etiquetas para enrutar, en lugar de direcciones IP completas. Su funcion principal es permitir la conmutación y el reenvío rápido en el core de la red basado en la etiqueta en lugar de realizar una búsqueda compleja en la tabla de ruteo IP en cada salto. Es utilizada principalmente por los Service Providers como medio de transporte WAN sin rutear con IP. Es muy usado en empresas con multiples sedes dada la seguridad de las VPN corporativas L2 y L3, trafico QoS (voz, video, datos críticos). Los principales protocolos asociados son:
+
+    - LDP: Distribucion y asociacion de etiquetas a prefijos IP entre routers.
+    - RSVP-TE: Establece LSPs coon reserva de recursos y camino explícito.
+    - OSPF/IS-IS: Protocolos de ruteo internos que proveen la topología sobre la que se construyen los LSP.
+    - MP-BGP: Extensión de BGP usada para implementar VPN L3 sobre MPLS.
 
 
 9. **Protocolos Obsoletos/Legacy**
@@ -210,3 +215,65 @@ En WDM se parten longitudes de onda. Es usada en fibra optica y es base de las r
     La clasificación CAT 6A (Category 6 Augmented) en el cableado de par trenzado UTP/STP es una especificación de rendimiento para cables que significa que pueden operar a una frecuencia de hasta 500 MHz.
 
     El principal beneficio que ofrece respecto a CAT 5e (100 MHz) y CAT 6 (250 MHz) es que soporta la velocidad de 10 Gigabit Ethernet en toda la distancia estándar de cableado estructurado, es decir, 100 metros completos. 
+
+
+
+## Bloque 6: HAMMING
+
+### Ejemplo 1: Quiero mandar el mensaje 00101 codificado.
+
+Sabemos por enunciado que M = 5
+
+***Se agregaran K bits, tal que K sea el menor que cumpla 2^K >= M + K + 1***
+
+=> 2 ^3 >= 5 + 3 + 1 => 8 >= 9 ERROR
+
+=> 2^4 >= 5 + 4 + 1 => 16 >= 10 OK
+
+***Entonces, los Ki ocuparan las posiciones K1 = 2^0, k2 = 2^1, K4 = 2^2, K8 = 2^3***
+
+Obtenemos K1 K2 M3 K4 M5 M6 M7 M8 = K1 K2 0 K4 0 1 0 K8 1
+
+***Cada bit de paridad ubicado en una posición que es potencia de 2 cubre todas las posiciones cuyo número binario tiene un 1 en ese bit.***
+| Bit de paridad | Posición | Cubre las posiciones cuyo número **binario** tiene... |
+| -------------- | -------- | ----------------------------------------------------- |
+| **K1**         | 1        | el bit menos significativo = 1                        |
+| **K2**         | 2        | el segundo bit = 1                                    |
+| **K4**         | 4        | el tercer bit = 1                                     |
+| **K8**         | 8        | el cuarto bit = 1                                     |
+
+| Pos | Binario | Ki que lo cubre |
+| --- | ------- | --------------- |
+| 1   | 0001    | K1              |
+| 2   | 0010    | K2              |
+| 3   | 0011    | K1, K2          |
+| 4   | 0100    | K4              |
+| 5   | 0101    | K1, K4          |
+| 6   | 0110    | K2, K4          |
+| 7   | 0111    | K1, K2, K4      |
+| 8   | 1000    | K8              |
+| 9   | 1001    | K1, K8          |  
+
+***Usamos paridad par: Cada bit de control debe hacer par el numero de 1s en las posiciones que cubre***
+
+K1 cubre 1,3,5,7,9 => K1 + 0 + 0 + 0 + 1 = 0 => K1 = 1
+
+K2 cubre 2,3,6,7 => K2 + 0 + 1 + 0 = 0 => K2 = 1 
+
+K4 cubre 4,5,6,7 => K4 + 0 + 1 + 0 = 0 => K4 = 1
+
+K8 cubre 8,9 => K9 + 1 = 0 => K9 = 1
+
+=> Codigo valido = 1 1 0 1 0 1 0 1 1
+
+### Ejemplo 2: Supongamos que transmito el código 1101001 y se recibe el 1101011, cambió el M6; CÓMO SE DETECTA ? Mediante la paridad de los subcódigos.
+
+P1 = 1 xor 0 xor 0 xor 1 = 0 
+
+P2 = 1 xor 0 xor 1 xor 1 = 1
+
+P4 = 1 xor 0 xor 1 xor 1 = 1
+
+(P4, P2, P1) = (1, 1, 0) ==> P4 y P2 : 2 + 4 = 6 ==> El bit invertido es el M6
+
+==> Si hubiera sido un Ki en vez de un Mi, se descarta.
