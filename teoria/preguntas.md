@@ -7,7 +7,7 @@
     
     __CAPA 7: Aplicacion -->__ Interfaz con el usuario. Proporciona servicios de red
 
-    __CAPA 6: Presentacion -->__ Encargada del formato, compresion y formato.
+    __CAPA 6: Presentacion -->__ Encargada del formato, compresion y del cifrado de datos.
 
     __CAPA 5: Sesion -->__ Administra el dialogo entre dispositivos. Gestiona el inicio, mantenimiento y fin de la sesion.
 
