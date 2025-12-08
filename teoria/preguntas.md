@@ -82,6 +82,13 @@
 
     El trafico Este-Oeste es aquel que fluye internamente entre los servidores (entre racks) dentro del Data Center. Es común en entornos virtualizados o arquitecturas de microservicios (ej. un servidor web comunicándose con un servidor de bases de datos). La arquitectura que lo optimiza es pine & Leaf, que ofrece una baja latencia y un gran ancho de banda no bloqueante para las comunicaciones internas.
 
+    ***Clasificación de los DC – Tier***
+    - __TIER I__: Básico. No tiene redundancia. Requiere paradas para mantenimiento. Muy vulnerable.
+    - __TIER II__: Tiene componentes redundantes, pero una sola vía de energía. Interrupciones posibles.
+    - __TIER III__: permite mantenimiento simultáneo. Vías de energía redundantes (una activa, una pasiva).
+    - __TIER IV__: Tolerante a fallas. Incluso ante errores o fallas de equipos, sigue funcionando sin interrupciones.
+
+
 
 5. **Par Trenzado y Crosstalk**
 
