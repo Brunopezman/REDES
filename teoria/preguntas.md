@@ -137,7 +137,11 @@
 
     BGP es un protocolo de ruteo dinamico de tipo Path Vector utilizado para intercambiar informacion de rutas entre diferenes Sistemas Autonomos (AS). Cada ISP o gran organizacion es un AS y BGP intercambia las redes que cada uno puede alcanzar.
 
-    BGP permite aplicar políticas como elegirt por donde sale o entra el trafico, balancear, filtrar anuncios. Usa atributos como AS-PATH, Local Preference, MED y Communities para seleccionar rutas.
+    BGP permite aplicar políticas como elegir por donde sale o entra el trafico, balancear, filtrar anuncios. Usa atributos como AS-PATH, Local Preference, MED y Communities para seleccionar rutas.
+
+    Tipos de BGP:
+    - eBGP: Entre distintos AS (como entre ISPs)
+    - iBGP: Dentro de un mismo AS
 
     EJ: Un banco (AS 65010) se conecta a dos ISPs:
     - ISP-A (AS 1234)
