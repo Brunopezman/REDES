@@ -5,17 +5,17 @@
 
     - ***1.1 Mencione y describa brevemente las siete (7) capas del Modelo OSI.***
     
-    __CAPA 7: Aplicacion -->__ Interfaz con el usuario. Proporciona servicios de red
+    __CAPA 7: Aplicacion -->__ Interfaz con el usuario. Proporciona servicios de red. Protocolos: HTTP/HTTPS, SMTP, FTP/TFTP y DNS
 
     __CAPA 6: Presentacion -->__ Encargada del formato, compresion y del cifrado de datos.
 
     __CAPA 5: Sesion -->__ Administra el dialogo entre dispositivos. Gestiona el inicio, mantenimiento y fin de la sesion.
 
-    __CAPA 4: Transporte -->__ Asegura que los datos lleguen completos y en orden con control de flujo y deteccion de errores.
+    __CAPA 4: Transporte -->__ Asegura que los datos lleguen completos y en orden con control de flujo y deteccion de errores. Protocolos: TCP (confiable), UDP (no confiable)
 
-    __CAPA 3: Red -->__ Direccionamiento y seleccion de ruta.
+    __CAPA 3: Red -->__ Direccionamiento y seleccion de ruta. Protocolo IP
 
-    __CAPA 2: Enlace de datos ->__ Transmicion segura entre dispositivos de la misma red local. Gestiona direcciones fisicas, control de flujo y organizacion en tramas.
+    __CAPA 2: Enlace de datos ->__ Transmicion segura entre dispositivos de la misma red local. Gestiona direcciones fisicas, control de flujo y organizacion en tramas. Protocolos: Ethernet (IEEE 802.3), PPP: conexiones punto a punto, Token Ring, HDLC
 
     __CAPA 1: Fisica -->__ Transmicion y recepcion de bits por el medio fisico (cables, fibra, radio frecuencia)
 
@@ -364,6 +364,12 @@ Existen 5 clases de direcciones IP:
 - CLASE E - SOLO EXPERIMENTAL
 
 ***Diferencias entre protocolo TCP y UDP***
+
+Son los dos protocolos de la Capa de Transporte (Capa 4) del modelo TCP/IP, y su diferencia fundamental radica en la fiabilidad y el control de flujo.
+
+TCP (Transmission Control Protocol): Es un protocolo orientado a conexión que garantiza la entrega confiable (fiable) y en orden de los datos. Uso Principal: Aplicaciones donde la integridad es crítica (HTTP, HTTPS, FTP, SMTP, SSH).
+
+UDP (User Datagram Protocol): Es un protocolo sin conexión (no fiable) que solo envía los datos ("fire and forget") sin verificar su recepción ni su orden.
 
 | Factor | TCP | UDP | 
 |------- |-----|-----|
