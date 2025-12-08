@@ -94,7 +94,7 @@
 
     - ***6.1 Defina NFV (Network Function Virtualization) y mencione dos (2) beneficios clave para los proveedores de servicio.***
     
-    NFV permite que funciones de red como fireballs, routers, NATs, Load Balancers puedan ejecutarse como software sobre hardware genérico (COTS), en vez de requerir dispositivos dedicados. A un proveedor de servicio le trae beneficios como facil integracion con la nube y automatización de despliegues.
+    NFV es una tecnologia que permite que funciones de red como fireballs, routers, NATs, Load Balancers puedan ejecutarse como software sobre hardware genérico (COTS), en vez de requerir dispositivos dedicados. A un proveedor de servicio le trae beneficios como facil integracion con la nube y automatización de despliegues.
 
     - ***6.2 ¿Qué es MANO en el contexto de NFV y cuáles son los tres (3) niveles principales de su arquitectura?***
 
